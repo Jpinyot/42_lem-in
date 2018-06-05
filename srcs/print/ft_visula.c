@@ -1,5 +1,16 @@
-#include "liblem.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_visula.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/05 18:26:45 by jpinyot           #+#    #+#             */
+/*   Updated: 2018/06/05 18:37:57 by jpinyot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "liblem.h"
 
 static int	ft_selector(void)
 {
@@ -14,10 +25,9 @@ static int	ft_selector(void)
 		n = ft_atoi(b);
 		ft_strdel(&b);
 	}
-
 	ft_printf("\033[H\033[J");
 	ft_putbanner();
-	return(n);
+	return (n);
 }
 
 static int	pathselector(t_path *p, t_hex *h)
@@ -36,15 +46,16 @@ static int	pathselector(t_path *p, t_hex *h)
 
 static int	hexselector(t_path *p, t_hex *h, char **map)
 {
-	int v;
-	char **d;
+	int		v;
+	char	**d;
 
 	ft_printf("\n\n\t\t\x1b[31mSelect type:\x1b[0m\n");
 	ft_printf("\t\t\t\x1b[91m1) Static\x1b[0m\n");
 	ft_printf("\t\t\t\x1b[91m2) Dynamic\x1b[0m\n");
 	if ((v = ft_selector()) == 1)
 	{
-		d = ft_statichex(p, h, map);
+		if (!(d = ft_statichex(p, h, map)))
+			return (0);
 		ft_putdmap(d);
 		ft_deletedstr(d);
 	}
@@ -53,20 +64,10 @@ static int	hexselector(t_path *p, t_hex *h, char **map)
 	return (0);
 }
 
-int	ft_visual(t_path *p, t_hex *h, char **map)
+static int	adminselector(t_path *p, t_hex *h, char **map, int v)
 {
-	int v;
-	char **c;
+	char	**c;
 
-	v = 0;
-	ft_printf("\033[H\033[J");
-	ft_putbanner();
-	ft_printf("\n\n\t\t\x1b[31mSelect visualitzation option:\x1b[0m\n");
-	ft_printf("\t\t\t\x1b[91m1) Path\x1b[0m\n");
-	ft_printf("\t\t\t\x1b[91m2) Hex\x1b[0m\n");
-	ft_printf("\t\t\t\x1b[91m3) Non\x1b[0m\n");
-	if ((v = ft_selector()) != 1 && v != 2 && v != 12 && v != 11 && v != 21 && v != 22)
-		return (0);
 	if (v == 11)
 		ft_staticpath(p);
 	if (v == 12)
@@ -75,7 +76,8 @@ int	ft_visual(t_path *p, t_hex *h, char **map)
 		return (3);
 	if (v == 21)
 	{
-		c = ft_statichex(p, h, map);
+		if (!(c = ft_statichex(p, h, map)))
+			return (0);
 		ft_putdmap(c);
 		ft_deletedstr(c);
 	}
@@ -84,4 +86,21 @@ int	ft_visual(t_path *p, t_hex *h, char **map)
 	if (v == 1)
 		v = pathselector(p, h);
 	return (v);
+}
+
+int			ft_visual(t_path *p, t_hex *h, char **map)
+{
+	int		v;
+
+	v = 0;
+	ft_printf("\033[H\033[J");
+	ft_putbanner();
+	ft_printf("\n\n\t\t\x1b[31mSelect visualitzation option:\x1b[0m\n");
+	ft_printf("\t\t\t\x1b[91m1) Path\x1b[0m\n");
+	ft_printf("\t\t\t\x1b[91m2) Hex\x1b[0m\n");
+	ft_printf("\t\t\t\x1b[91m3) Non\x1b[0m\n");
+	if ((v = ft_selector()) != 1 && v != 2 &&
+			v != 12 && v != 11 && v != 21 && v != 22)
+		return (0);
+	return (adminselector(p, h, map, v));
 }

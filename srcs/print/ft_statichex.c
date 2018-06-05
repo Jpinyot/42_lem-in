@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_statichex.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/05 18:40:36 by jpinyot           #+#    #+#             */
+/*   Updated: 2018/06/05 19:32:48 by jpinyot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "liblem.h"
 
-static char	**ft_roomlen(char **m, char **s)
+static int	maxlen(char **m)
 {
-	int i;
-	int cnt;
-	int cnt2;
-	char *t;
+	int		i;
+	int		cnt;
+	int		cnt2;
+	char	*t;
 
 	i = -1;
 	cnt = 0;
@@ -20,10 +32,21 @@ static char	**ft_roomlen(char **m, char **s)
 			}
 		}
 	}
+	i = 0;
+	while (m[cnt2][i] && m[cnt2][i] != ' ')
+		i++;
+	return (i);
+}
+
+static char	**ft_roomlen(char **m, char **s)
+{
+	int		i;
+	int		cnt;
+	int		cnt2;
+	char	*t;
+
 	i = -1;
-	while (m[cnt2][++i] && m[cnt2][i] != ' ');
-	cnt = i;
-	i = -1;
+	cnt = maxlen(m);
 	while (++i < 31)
 	{
 		if (!(s[i] = ft_strnew(71 + cnt)))
@@ -33,23 +56,11 @@ static char	**ft_roomlen(char **m, char **s)
 	return (s);
 }
 
-static char	**ft_mapgenerator(char **m)
+static char	**insertroom(t_hex *h, char **map)
 {
-	char **r;
-	int	i;
-
-	i = -1;
-	if (!(r = (char **)malloc(sizeof(char **) * (32))))
-		return (NULL);
-	r[431] = NULL;
-	return (ft_roomlen(m, r));
-}
-
-char	**insertroom(t_hex *h, char **map)
-{
-	t_id *t;
-	int	x;
-	int	i;
+	t_id	*t;
+	int		x;
+	int		i;
 
 	t = h->id;
 	while (t)
@@ -68,10 +79,10 @@ char	**insertroom(t_hex *h, char **map)
 
 static int	nonrepeat(t_hex *h)
 {
-	t_id *t;
-	t_id *t2;
-	int	i;
-	int	j;
+	t_id	*t;
+	t_id	*t2;
+	int		i;
+	int		j;
 
 	t = h->id;
 	while (t->next)
@@ -79,16 +90,10 @@ static int	nonrepeat(t_hex *h)
 		t2 = t->next;
 		while (t2)
 		{
-			if (t->x < t2->x)
-			{
+			if (t->x < t2->x && (j = t2->x))
 				i = t->x + ft_strlen(t->n);
-				j = t2->x;
-			}
-			else
-			{
+			else if (t->x >= t2->x && (j = t->x))
 				i = t2->x + ft_strlen(t->n);
-				j = t->x;
-			}
 			if (t->y == t2->y && i >= j)
 				return (0);
 			t2 = t2->next;
@@ -98,19 +103,24 @@ static int	nonrepeat(t_hex *h)
 	return (1);
 }
 
-char	**ft_statichex(t_path *p, t_hex *h, char **m)
+char		**ft_statichex(t_path *p, t_hex *h, char **m)
 {
 	char	**map;
 
 	if (h->map->w > 10)
 		return (NULL);
-	if (!(map = ft_mapgenerator(m)))
+	if (!(map = (char **)malloc(sizeof(char **) * (32))))
 		return (NULL);
-//	ft_putid(h->id);
+	map[31] = NULL;
+	if (!(map = ft_roomlen(m, map)))
+		return (NULL);
 	if (!(h->id = ft_getaxis(h, m)))
 		return (NULL);
 	if (!(nonrepeat(h)))
+	{
+		ft_deletedstr(map);
 		return (NULL);
+	}
 	map = insertroom(h, map);
 	map = ft_insertlink(h, map, m);
 	return (map);

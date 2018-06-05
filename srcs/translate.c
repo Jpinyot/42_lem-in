@@ -57,14 +57,16 @@ t_path	*translate(t_hex *h)
 	l = pathlen(h);
 	i = 0;
 	if  (!(p = copypath(h, 0)))
-		return (NULL);
+		ft_exit();
+//		return (NULL);
 	bgn = p;
 	while (++i < l)
 	{
 		if (h->path[i][0] < 0)
 			break ;
 		if (!(p->next = copypath(h, i)))
-			return (NULL);
+			ft_exit();
+//			return (NULL);
 		p = p->next;
 	}
 	return (antdist(h ,bgn));

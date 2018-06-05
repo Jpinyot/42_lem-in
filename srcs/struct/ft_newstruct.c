@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_newstruct.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/05 17:39:10 by jpinyot           #+#    #+#             */
+/*   Updated: 2018/06/05 17:40:12 by jpinyot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "liblem.h"
 
 t_hex	*ft_newhex(int a, t_map *m, t_id *id)
@@ -23,8 +35,8 @@ t_hex	*ft_newhex(int a, t_map *m, t_id *id)
 t_map	*ft_newmap(int w)
 {
 	t_map	*m;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = -1;
 	if (!(m = (t_map *)malloc(sizeof(t_map))))
@@ -39,12 +51,12 @@ t_map	*ft_newmap(int w)
 		while (++j < w)
 			m->map[i][j] = 0;
 	}
-	m->w = w; 
+	m->w = w;
 	return (m);
 }
 
 t_id	*ft_newid(char *n, int i)
-{	
+{
 	t_id *id;
 
 	if (!(id = (t_id *)malloc(sizeof(t_id))))
@@ -62,7 +74,7 @@ t_id	*ft_newid(char *n, int i)
 t_path	*ft_newpath(int w)
 {
 	t_path	*p;
-	int	i;
+	int		i;
 
 	i = -1;
 	if (!(p = (t_path *)malloc(sizeof(t_path))))

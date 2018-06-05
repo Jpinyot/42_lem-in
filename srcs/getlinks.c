@@ -79,22 +79,20 @@ t_hex	*getlinks(t_hex *h, char **map)
 	int	y;
 
 	if ((i = maplinks(map)) == -1)
-		return (NULL);
+		ft_exit();
 	while(map[i])
 	{
 		if (map[i][0] != '#')
 		{
-//	ft_putstr("$");
 			if ((x = findroom(h->id, map[i], 1)) == -1)
-				return (NULL);
+				ft_exit();
 			if ((y = findroom(h->id, map[i], 0)) == -1)
-				return (NULL);
+				ft_exit();
 			if (x != y)
 			{
 				h->map->map[x][y] = 1;
 				h->map->map[y][x] = 1;
 			}
-//			h = insertlink(h, x, y);
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 #    By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/14 22:43:59 by jpinyot           #+#    #+#              #
-#    Updated: 2018/04/23 20:54:31 by jpinyot          ###   ########.fr        #
+#    Updated: 2018/06/04 21:55:06 by jpinyot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ FUNC = ft_idgenerator.c\
        ft_getaxis.c\
        ft_insertlink.c\
        ft_linkupdown.c\
+	   ft_exit.c
 
 STR = ft_newstruct.c\
       ft_deletemap.c\

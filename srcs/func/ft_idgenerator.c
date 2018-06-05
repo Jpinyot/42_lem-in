@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_idgenerator.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/05 19:43:19 by jpinyot           #+#    #+#             */
+/*   Updated: 2018/06/05 20:01:32 by jpinyot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "liblem.h"
 
 static int	checkval(char *m)
 {
 	char	*t;
 	char	*t2;
-	int	i;
+	int		i;
 
 	if (m[0] == '#')
 		return (1);
@@ -25,7 +37,7 @@ static t_id	*ft_split(char *map, int i)
 {
 	char	**s;
 	t_id	*id;
-	int	j;
+	int		j;
 	char	*t;
 
 	j = 0;
@@ -45,7 +57,7 @@ static t_id	*ft_bgnend(char **map, int x)
 {
 	t_id	*bgn;
 	char	**s;
-	int i;
+	int		i;
 
 	i = 0;
 	if (x == 0)
@@ -72,7 +84,8 @@ static int	nonrepeat(t_id *bgn)
 		t2 = t->next;
 		while (t2)
 		{
-			if (t->n[0] != '#' && t2->n[0] != '#'  && ft_strcmp(t->n, t2->n) == 0)
+			if (t->n[0] != '#' && t2->n[0] != '#'
+					&& ft_strcmp(t->n, t2->n) == 0)
 				return (0);
 			t2 = t2->next;
 		}
@@ -85,33 +98,27 @@ t_id		*ft_idgenerator(char **map)
 {
 	t_id	*id;
 	t_id	*bgn;
-	int	cnt;
-	int	i;
+	int		cnt;
+	int		i;
 
 	cnt = 1;
 	i = -1;
 	if (!(id = ft_bgnend(map, 0)))
-	{
-				write(1, "*", 1);
-		return (NULL);
-	}
+		ft_exit();
 	bgn = id;
 	while (map[++i])
 	{
 		if (ft_strchr(map[i], ' '))
 		{
-			if (!(id->next = ft_split(map[i], cnt)))
-			{
-				return (NULL);
-			}
+			if (!(id->next = ft_split(map[i], cnt++)))
+				ft_exit();
 			id = id->next;
-			cnt++;
 		}
-		else if (ft_strcmp(map[i], "##start") == 0||
+		else if (ft_strcmp(map[i], "##start") == 0 ||
 				ft_strcmp(map[i], "##end") == 0)
 			i++;
 	}
 	if (!(id->next = ft_bgnend(map, cnt)) || nonrepeat(bgn) == 0)
-		return (NULL);
+		ft_exit();
 	return (bgn);
 }

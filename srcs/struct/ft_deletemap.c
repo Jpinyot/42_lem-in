@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_deletemap.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/05 17:38:00 by jpinyot           #+#    #+#             */
+/*   Updated: 2018/06/05 17:38:25 by jpinyot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "liblem.h"
 
 void	ft_deletemap(t_map *m)
@@ -10,11 +22,11 @@ void	ft_deletemap(t_map *m)
 		if (m->map)
 		{
 			if (m->w > 0)
-				while(++i < m->w)
+				while (++i < m->w)
 					free(m->map[i]);
-			free (m->map);
+			free(m->map);
 		}
-		free (m);
+		free(m);
 		m = NULL;
 	}
 }

@@ -117,10 +117,12 @@ t_hex	*getpaths(t_hex *h)
 	int **p;
 
 	if (!(h = intmalloc(h)))
-		return (NULL);
+		ft_exit();
+//		return (NULL);
 	while (extractpath(h) != 0)
 		h->map = ft_mindistance(h->map);
 	if (h->path[0][0] < 0)
-		return (NULL);
+		ft_exit();
+//		return (NULL);
 	return (h);
 }

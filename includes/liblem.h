@@ -58,6 +58,7 @@ void	ft_deletehex(t_hex *h);
 void	ft_deletedstr(char **s);
 
 //FUNC
+void    ft_exit(void);
 t_id		*ft_idgenerator(char **map);
 t_map		*ft_mindistance(t_map *m);
 void		ft_read_nd_clear(void);

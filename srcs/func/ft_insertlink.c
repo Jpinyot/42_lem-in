@@ -1,4 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_insertlink.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/04 22:34:06 by jpinyot           #+#    #+#             */
+/*   Updated: 2018/06/05 19:41:54 by jpinyot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "liblem.h"
+
+static char	**samey(t_id *t1, t_id *t2, char **map)
+{
+	int i;
+	int j;
+
+	if (t1->x < t2->x)
+	{
+		i = t1->x;
+		j = t2->x;
+	}
+	else
+	{
+		i = t2->x;
+		j = t1->x;
+	}
+	while (map[t1->y][i] && map[t1->y][i] != ' ')
+		i++;
+	if (i >= t1->x && i >= t2->x)
+		return (map);
+	while (map[t1->y][++i] && i != j)
+		map[t1->y][i] = '-';
+	return (map);
+}
 
 static char	**straightline(t_id *t1, t_id *t2, char **map)
 {
@@ -21,25 +57,7 @@ static char	**straightline(t_id *t1, t_id *t2, char **map)
 			map[i][t1->x] = '|';
 	}
 	else if (t1->y == t2->y)
-	{
-		if (t1->x < t2->x)
-		{
-			i = t1->x;
-			j = t2->x;
-		}
-		else
-		{
-			i = t2->x;
-			j = t1->x;
-		}
-		while (map[t1->y][++i] && map[t1->y][i] != ' ');
-		i -= 1;
-		if (i >= t1->x && i >= t2->x)
-			return (map);
-		while (map[t1->y][++i] && i != j)
-			map[t1->y][i] = '-';
-
-	}
+		map = samey(t1, t2, map);
 	return (map);
 }
 
@@ -82,11 +100,11 @@ static char	**inlink(t_hex *h, char **map, int i, int j)
 	return (map);
 }
 
-char	**ft_insertlink(t_hex *h, char **map, char **m)
+char		**ft_insertlink(t_hex *h, char **map, char **m)
 {
-	int i;
-	int j;
-	char **t;
+	int		i;
+	int		j;
+	char	**t;
 
 	if (!(h = getlinks(h, m)))
 		return (NULL);

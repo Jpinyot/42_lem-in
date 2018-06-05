@@ -37,12 +37,12 @@ t_hex		*getstruct(char **map)
 	int	a;
 
 	if ((a = anthunter(map)) == 0)
-		return (NULL);
+		ft_exit();
 	if (!(m = ft_newmap(maplen(map))))
-		return (NULL);
+		ft_exit();
 	if (!(id = ft_idgenerator(map)))
-		return (NULL);
+		ft_exit();
 	if (!(h = ft_newhex(a, m, id)))
-		return (NULL);
+		ft_exit();
 	return (h);
 }

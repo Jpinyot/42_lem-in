@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putmap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/05 18:39:52 by jpinyot           #+#    #+#             */
+/*   Updated: 2018/06/05 18:40:15 by jpinyot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "liblem.h"
 
 void	ft_puttmap(t_map *m)
 {
 	t_map	*t;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = -1;
 	if (m == NULL)
@@ -31,7 +43,7 @@ void	ft_puttmap(t_map *m)
 void	ft_putfinal(t_path *p)
 {
 	t_path	*t;
-	int	i;
+	int		i;
 
 	if (t == NULL)
 		write(1, "NULL\n", 5);
@@ -47,12 +59,7 @@ void	ft_putfinal(t_path *p)
 			ft_putchar('>');
 			write(1, "  ", 2);
 		}
-		write(1, "\n", 1);
-		ft_putnbr(t->ants);
-		ft_putchar('<');
-		ft_putnbr(t->cost);
-		ft_putchar('>');
-		write(1, "\n", 1);
+		ft_printf("\n%i<%i>\n", t->ants, t->cost);
 		t = t->next;
 	}
 	write(1, "\n", 1);
@@ -62,8 +69,8 @@ void	ft_putfinal(t_path *p)
 void	ft_putpath(t_hex *h)
 {
 	t_hex	*t;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = -1;
 	if (h->path == NULL)

@@ -1,15 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_getaxis.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/04 22:28:18 by jpinyot           #+#    #+#             */
+/*   Updated: 2018/06/04 22:52:27 by jpinyot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "liblem.h"
 
 static t_id	*strcmpid(char *s, t_id *id, int mx, int my)
 {
-	int	i;
+	int		i;
 	t_id	*t;
 
 	t = id;
 	i = -1;
 	if (!(ft_strchr(s, ' ') || s[0] == ' '))
 		return (id);
-	while (s[++i] && id->n[i] && s[i] == id->n[i]);
+	while (s[++i] && id->n[i])
+		if (s[i] != id->n[i])
+			break ;
 	if (s[i] != ' ' || id->n[i] != 0)
 		return (id);
 	if (mx)
@@ -25,9 +39,9 @@ static t_id	*strcmpid(char *s, t_id *id, int mx, int my)
 
 static int	getmaxy(char **m)
 {
-	int i;
-	int cnt;
-	char *t;
+	int		i;
+	int		cnt;
+	char	*t;
 
 	i = -1;
 	cnt = 0;
@@ -45,9 +59,9 @@ static int	getmaxy(char **m)
 
 static int	getmaxx(char **m)
 {
-	int i;
-	int cnt;
-	char *t;
+	int		i;
+	int		cnt;
+	char	*t;
 
 	i = -1;
 	cnt = 0;
@@ -60,12 +74,12 @@ static int	getmaxx(char **m)
 	return (cnt);
 }
 
-t_id	*ft_getaxis(t_hex *h, char **m)
+t_id		*ft_getaxis(t_hex *h, char **m)
 {
 	t_id	*t;
-	int	i;
-	int	my;
-	int	mx;
+	int		i;
+	int		my;
+	int		mx;
 
 	t = h->id;
 	mx = getmaxx(m);
@@ -73,7 +87,7 @@ t_id	*ft_getaxis(t_hex *h, char **m)
 	while (t)
 	{
 		i = -1;
-		while ( t && t->n[0] == '#')
+		while (t && t->n[0] == '#')
 			t = t->next;
 		if (!t)
 			return (h->id);

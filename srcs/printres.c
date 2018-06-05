@@ -78,7 +78,8 @@ void printres(t_path *p, t_hex *h, char **map, int v)
 	else if (v)
 		v = ft_visual(p, h, map);
 	if (v == 3)
-		m = ft_statichex(p, h, map);
+		if (!(m = ft_statichex(p, h, map)))
+			v = 2;
 	while (a <= h->ants)
 	{
 		a = ft_move (p, a);
