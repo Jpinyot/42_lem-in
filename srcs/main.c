@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/07 20:04:30 by jpinyot           #+#    #+#             */
+/*   Updated: 2018/06/30 20:33:32 by jpinyot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "liblem.h"
 
 int	main(int ac, char **av)
 {
-	char **map;
-	int	v;
-	t_path *path;
+	char	**map;
+	int		v;
+	t_path	*path;
 
 	v = 0;
 	if (ac > 1)
@@ -12,10 +24,7 @@ int	main(int ac, char **av)
 	if (!(map = getord()))
 		return (-1);
 	if (!(path = lem_in(map, v)))
-	{
-//		ft_putstr_fd("ERROR", 2);
 		return (-1);
-	}
 	ft_deletepath(path);
 	ft_deletedstr(map);
 	return (0);

@@ -1,42 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getord.c                                           :+:      :+:    :+:   */
+/*   ft_extrafunc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/07 19:56:15 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/06/30 23:47:17 by jpinyot          ###   ########.fr       */
+/*   Created: 2018/06/29 16:12:06 by jpinyot           #+#    #+#             */
+/*   Updated: 2018/06/29 16:33:13 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "liblem.h"
 
-char	**getord(void)
+t_hex	*intmalloc(t_hex *h)
 {
-	char	*line;
-	char	**r;
-	char	*s;
-	char	*d;
+	int i;
+	int j;
+	int cnt;
 
-	s = ft_strnew(1);
-	while (get_next_line(0, &line) > 0)
+	cnt = 0;
+	i = -1;
+	while (i++ < h->map->w - 1)
+		if (h->map->map[0][i] == 1)
+			cnt++;
+	if (!cnt)
+		return (NULL);
+	if (!(h->path = (int **)malloc(sizeof(int **) * cnt)))
+		return (NULL);
+	i = -1;
+	h->w = cnt;
+	while (++i < cnt)
 	{
-		if (line[0] == 0)
-			ft_exit();
-		d = s;
-		if (!(s = ft_strjoin(s, line)))
+		if (!(h->path[i] = (int *)malloc(sizeof(int *) * (h->map->w))))
 			return (NULL);
-		ft_strdel(&d);
-		d = s;
-		if (!(s = ft_strjoin(s, "\n")))
-			return (NULL);
-		ft_strdel(&d);
-		ft_strdel(&line);
+		j = -1;
+		while (++j < h->map->w)
+			h->path[i][j] = -1;
 	}
-	if (s[0] == 0)
-		ft_exit();
-	r = ft_strsplit(s, '\n');
-	ft_strdel(&s);
-	return (r);
+	return (h);
 }

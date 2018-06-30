@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   translate.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/07 20:09:56 by jpinyot           #+#    #+#             */
+/*   Updated: 2018/06/07 20:11:50 by jpinyot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "liblem.h"
 
-static int	pathlen(t_hex *h)
+static int		pathlen(t_hex *h)
 {
 	int i;
 
@@ -14,7 +26,7 @@ static int	pathlen(t_hex *h)
 	return (i);
 }
 
-static char	*copyid(t_hex *h, int i, int j)
+static char		*copyid(t_hex *h, int i, int j)
 {
 	t_id	*t;
 	char	*r;
@@ -30,9 +42,9 @@ static char	*copyid(t_hex *h, int i, int j)
 
 static t_path	*copypath(t_hex *h, int i)
 {
-	t_path *p;
-	int	j;
-	int	x;
+	t_path	*p;
+	int		j;
+	int		x;
 
 	j = -1;
 	x = -1;
@@ -47,18 +59,17 @@ static t_path	*copypath(t_hex *h, int i)
 	return (p);
 }
 
-t_path	*translate(t_hex *h)
+t_path			*translate(t_hex *h)
 {
 	t_path	*p;
 	t_path	*bgn;
-	int	i;
-	int	l;
+	int		i;
+	int		l;
 
 	l = pathlen(h);
 	i = 0;
-	if  (!(p = copypath(h, 0)))
+	if (!(p = copypath(h, 0)))
 		ft_exit();
-//		return (NULL);
 	bgn = p;
 	while (++i < l)
 	{
@@ -66,8 +77,7 @@ t_path	*translate(t_hex *h)
 			break ;
 		if (!(p->next = copypath(h, i)))
 			ft_exit();
-//			return (NULL);
 		p = p->next;
 	}
-	return (antdist(h ,bgn));
+	return (antdist(h, bgn));
 }

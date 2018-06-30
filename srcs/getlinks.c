@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   getlinks.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/07 20:12:32 by jpinyot           #+#    #+#             */
+/*   Updated: 2018/06/30 23:57:07 by jpinyot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "liblem.h"
 
 static int	maplinks(char **m)
@@ -29,12 +41,37 @@ static int	maplinks(char **m)
 	return (-1);
 }
 
+static int	findroom_else(t_id *id, char *s)
+{
+	char	*t;
+	t_id	*d;
+	int		i;
+	int		j;
+
+	d = id;
+	t = s;
+	while (d)
+	{
+		i = ft_strlen(t);
+		j = ft_strlen(d->n);
+		while (i >= 0 && j >= 0 && t[i] == d->n[j])
+		{
+			i--;
+			j--;
+		}
+		if (j == -1 && t[i] == '-')
+			return (d->id);
+		d = d->next;
+	}
+	return (-1);
+}
+
 static int	findroom(t_id *id, char *s, int x)
 {
 	char	*t;
 	t_id	*d;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	d = id;
 	t = s;
@@ -52,27 +89,11 @@ static int	findroom(t_id *id, char *s, int x)
 		}
 	}
 	else
-	{
-		while (d)
-		{
-			i = ft_strlen(t);
-			j = ft_strlen(d->n);
-			while (i >= 0 && j >= 0 && t[i] == d->n[j])
-			{
-				i--;
-				j--;
-			}
-			if (j == -1 && t[i] == '-')
-				return (d->id);
-			d = d->next;
-		}
-	}
+		return (findroom_else(id, s));
 	return (-1);
 }
 
-
-
-t_hex	*getlinks(t_hex *h, char **map)
+t_hex		*getlinks(t_hex *h, char **map)
 {
 	int	i;
 	int	x;
@@ -80,7 +101,7 @@ t_hex	*getlinks(t_hex *h, char **map)
 
 	if ((i = maplinks(map)) == -1)
 		ft_exit();
-	while(map[i])
+	while (map[i])
 	{
 		if (map[i][0] != '#')
 		{
@@ -96,8 +117,6 @@ t_hex	*getlinks(t_hex *h, char **map)
 		}
 		i++;
 	}
-//	if (!(map[i]))
-//		return (NULL);
 	h->map = ft_mindistance(h->map);
 	return (h);
 }

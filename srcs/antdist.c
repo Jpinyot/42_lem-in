@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   antdist.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/07 19:55:01 by jpinyot           #+#    #+#             */
+/*   Updated: 2018/06/07 19:56:10 by jpinyot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "liblem.h"
 
 static t_path	*ft_pathlen(t_path *p, int ants)
 {
-	int	l;
-	int	div;
+	int		l;
+	int		div;
 	t_path	*t;
 
 	l = 0;
@@ -50,7 +62,7 @@ static t_path	*sortants(t_path *p)
 {
 	t_path	*min;
 	t_path	*max;
-	int	a;
+	int		a;
 
 	if (!(min = minmaxcost(p, 1)))
 		return (p);
@@ -68,7 +80,7 @@ static t_path	*sortants(t_path *p)
 	return (p);
 }
 
-t_path	*antdist(t_hex *h, t_path *p)
+t_path			*antdist(t_hex *h, t_path *p)
 {
 	int	ants;
 	int	div;
