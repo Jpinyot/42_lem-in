@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 20:02:02 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/07/01 00:23:28 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/07/01 18:14:10 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ t_hex		*getstruct(char **map)
 		ft_exit();
 	if (!(m = ft_newmap(maplen(map, i))))
 		ft_exit();
-	if (!(id = ft_idgenerator(map, i)))
+	if (!(id = ft_idgenerator(map, i, 1)))
 		ft_exit();
 	if (!(h = ft_newhex(a, m, id)))
 		ft_exit();

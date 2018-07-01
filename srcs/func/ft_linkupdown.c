@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 22:31:21 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/06/05 19:43:13 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/07/01 18:00:49 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,6 @@ static char	**todown(t_id *down, t_id *up, char **m)
 	while (m[++y][x] && y != up->y)
 		if (m[y][++x] == ' ')
 			m[y][x] = '\\';
-	return (m);
-}
-
-static char	**toup(t_id *down, t_id *up, char **m)
-{
-	int x;
-	int y;
-
-	x = down->x;
-	y = down->y;
-	while (m[--y] && y != up->y)
-		if (m[y][x] == ' ')
-			m[y][x] = '|';
-	while (m[y][++x] && x != up->x)
-		if (m[y][x] == ' ')
-			m[y][x] = '-';
 	return (m);
 }
 

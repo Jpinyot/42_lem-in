@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 19:55:01 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/06/07 19:56:10 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/07/01 17:45:30 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,6 @@ static t_path	*sortants(t_path *p)
 
 t_path			*antdist(t_hex *h, t_path *p)
 {
-	int	ants;
-	int	div;
-	int	n;
-
 	p = ft_pathlen(p, h->ants);
 	p = sortants(p);
 	return (p);

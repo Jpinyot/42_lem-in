@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 19:56:34 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/06/30 23:27:39 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/07/01 17:44:56 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,8 @@ static int		extractpath(t_hex *h)
 {
 	int	l;
 	int	i;
-	int	j;
 
 	i = 0;
-	j = l;
 	if ((l = h->map->map[0][h->map->w - 1] - 1) < 1)
 	{
 		if (l != 0)
@@ -105,8 +103,6 @@ static int		extractpath(t_hex *h)
 
 t_hex			*getpaths(t_hex *h)
 {
-	int **p;
-
 	if (!(h = intmalloc(h)))
 		ft_exit();
 	while (extractpath(h) != 0)

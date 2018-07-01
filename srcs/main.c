@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 20:04:30 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/06/30 20:33:32 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/07/01 18:18:00 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	main(int ac, char **av)
 
 	v = 0;
 	if (ac > 1)
-		v = 1;
+		if (ft_strcmp(av[1], "-v") == 0)
+			v = 1;
 	if (!(map = getord()))
 		return (-1);
 	if (!(path = lem_in(map, v)))

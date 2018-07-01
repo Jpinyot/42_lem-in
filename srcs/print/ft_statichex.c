@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 18:40:36 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/06/05 19:32:48 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/07/01 17:51:46 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ static char	**ft_roomlen(char **m, char **s)
 {
 	int		i;
 	int		cnt;
-	int		cnt2;
-	char	*t;
 
 	i = -1;
 	cnt = maxlen(m);
@@ -103,7 +101,7 @@ static int	nonrepeat(t_hex *h)
 	return (1);
 }
 
-char		**ft_statichex(t_path *p, t_hex *h, char **m)
+char		**ft_statichex(t_hex *h, char **m)
 {
 	char	**map;
 

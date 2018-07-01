@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 22:32:17 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/06/04 22:32:45 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/07/01 17:56:21 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static int	**reppath(int **m, int l, int x)
 
 t_map		*ft_mindistance(t_map *m)
 {
-	int **t;
 	int i;
 
 	i = 0;

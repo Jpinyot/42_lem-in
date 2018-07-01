@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 22:34:06 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/06/05 19:41:54 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/07/01 17:56:52 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ char		**ft_insertlink(t_hex *h, char **map, char **m)
 {
 	int		i;
 	int		j;
-	char	**t;
 
 	if (!(h = getlinks(h, m)))
 		return (NULL);

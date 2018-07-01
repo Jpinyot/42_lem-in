@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 20:12:32 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/06/30 23:57:07 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/07/01 17:43:43 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ static int	findroom(t_id *id, char *s, int x)
 	char	*t;
 	t_id	*d;
 	int		i;
-	int		j;
 
 	d = id;
 	t = s;

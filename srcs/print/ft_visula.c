@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 18:26:45 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/06/05 18:37:57 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/07/01 17:54:17 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_selector(void)
 	return (n);
 }
 
-static int	pathselector(t_path *p, t_hex *h)
+static int	pathselector(t_path *p)
 {
 	int v;
 
@@ -44,7 +44,7 @@ static int	pathselector(t_path *p, t_hex *h)
 	return (0);
 }
 
-static int	hexselector(t_path *p, t_hex *h, char **map)
+static int	hexselector(t_hex *h, char **map)
 {
 	int		v;
 	char	**d;
@@ -54,7 +54,7 @@ static int	hexselector(t_path *p, t_hex *h, char **map)
 	ft_printf("\t\t\t\x1b[91m2) Dynamic\x1b[0m\n");
 	if ((v = ft_selector()) == 1)
 	{
-		if (!(d = ft_statichex(p, h, map)))
+		if (!(d = ft_statichex(h, map)))
 			return (0);
 		ft_putdmap(d);
 		ft_deletedstr(d);
@@ -76,15 +76,15 @@ static int	adminselector(t_path *p, t_hex *h, char **map, int v)
 		return (3);
 	if (v == 21)
 	{
-		if (!(c = ft_statichex(p, h, map)))
+		if (!(c = ft_statichex(h, map)))
 			return (0);
 		ft_putdmap(c);
 		ft_deletedstr(c);
 	}
 	if (v == 2)
-		v = hexselector(p, h, map);
+		v = hexselector(h, map);
 	if (v == 1)
-		v = pathselector(p, h);
+		v = pathselector(p);
 	return (v);
 }
 

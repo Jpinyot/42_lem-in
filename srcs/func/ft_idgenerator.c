@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 19:43:19 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/07/01 00:23:30 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/07/01 18:18:04 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static t_id	*ft_split(char *map, int i)
 	char	**s;
 	t_id	*id;
 	int		j;
-	char	*t;
 
 	j = 0;
 	if (!(checkval(map)))
@@ -59,7 +58,6 @@ static t_id	*ft_split(char *map, int i)
 static t_id	*ft_bgnend(char **map, int x)
 {
 	t_id	*bgn;
-	char	**s;
 	int		i;
 
 	i = 0;
@@ -97,19 +95,18 @@ static int	nonrepeat(t_id *bgn)
 	return (1);
 }
 
-t_id		*ft_idgenerator(char **map, int i)
+t_id		*ft_idgenerator(char **map, int i, int cnt)
 {
 	t_id	*id;
 	t_id	*bgn;
-	int		cnt;
 
-	cnt = 1;
 	if (!(id = ft_bgnend(map, 0)))
 		ft_exit();
 	bgn = id;
 	while (map[++i])
 	{
-		if (map[i][0] == 'L' || (map[i][0] != '#' && (!(ft_strchr(map[i], ' ')) && !(ft_strchr(map[i], '-')))))
+		if (map[i][0] == 'L' || (map[i][0] != '#' &&
+					(!(ft_strchr(map[i], ' ')) && !(ft_strchr(map[i], '-')))))
 			ft_exit();
 		if (ft_strchr(map[i], ' '))
 		{

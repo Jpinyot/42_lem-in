@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 20:05:32 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/06/30 16:39:09 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/07/01 17:52:26 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void			printres(t_path *p, t_hex *h, char **map, int v)
 	a = 1;
 	v = visualselect(v, p, h, map);
 	if (v == 3)
-		if (!(m = ft_statichex(p, h, map)))
+		if (!(m = ft_statichex(h, map)))
 			v = 2;
 	while (a <= h->ants)
 	{

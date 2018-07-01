@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 18:39:52 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/06/05 18:40:15 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/07/01 17:46:22 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_putfinal(t_path *p)
 	t_path	*t;
 	int		i;
 
-	if (t == NULL)
+	if (p == NULL)
 		write(1, "NULL\n", 5);
 	t = p;
 	while (t)

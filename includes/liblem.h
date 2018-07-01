@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/30 20:07:46 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/06/30 23:46:16 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/07/01 18:07:35 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void				ft_deletedstr(char **s);
 ** FUNC
 */
 void				ft_exit(void);
-t_id				*ft_idgenerator(char **map, int i);
+t_id				*ft_idgenerator(char **map, int i, int cnt);
 t_map				*ft_mindistance(t_map *m);
 void				ft_read_nd_clear(void);
 t_id				*ft_getaxis(t_hex *h, char **m);
@@ -91,7 +91,7 @@ void				ft_putinstruct(char **m);
 void				ft_putbanner(void);
 int					ft_visual(t_path *p, t_hex *h, char **m);
 void				ft_staticpath(t_path *p);
-char				**ft_statichex(t_path *p, t_hex *h, char **map);
+char				**ft_statichex(t_hex *h, char **map);
 void				ft_dynamicpath(t_path *p, int m);
 void				ft_putdstr(char **s);
 void				ft_putdmap(char **s);

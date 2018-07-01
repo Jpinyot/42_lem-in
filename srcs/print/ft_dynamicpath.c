@@ -6,13 +6,13 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 17:40:49 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/06/05 17:46:58 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/07/01 17:54:55 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "liblem.h"
 
-static void	pathprinter(t_path *p, t_path *t)
+static void	pathprinter(t_path *t)
 {
 	int i;
 
@@ -43,7 +43,7 @@ void		ft_dynamicpath(t_path *p, int m)
 	write(1, "\n\n", 1);
 	while (t)
 	{
-		pathprinter(p, t);
+		pathprinter(t);
 		t = t->next;
 	}
 	ft_printf("\n\t\x1b[36mCURRENT COST: %i\x1b[0m\n", m);
