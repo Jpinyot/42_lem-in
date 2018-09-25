@@ -6,7 +6,7 @@
 #    By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/14 22:43:59 by jpinyot           #+#    #+#              #
-#    Updated: 2018/07/01 19:10:15 by jpinyot          ###   ########.fr        #
+#    Updated: 2018/09/25 18:37:46 by jpinyot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,86 +85,46 @@ fclean: clean
 
 re: fclean
 	make
-leaks:
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid00 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid01 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid02 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid03 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid04 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid05 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid06 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid07 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid08 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid09 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid10 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid11 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid12 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid13 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid14 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid15 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid16 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid17 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid18 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid19 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid20 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid21 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid22 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid23 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid24 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid25 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid26 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid27 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid28 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid29 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid30 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid31 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid32 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid33 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid34 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid35 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid36 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid37 2>&1 | grep lost
-	@valgrind --leak-check=full ./lem-in < unvalid_map/map_non_valid38 2>&1 | grep lost
 
 check:
-	-./lem-in < unvalid_map/map_non_valid00
-	-./lem-in < unvalid_map/map_non_valid01
-	-./lem-in < unvalid_map/map_non_valid02
-	-./lem-in < unvalid_map/map_non_valid03
-	-./lem-in < unvalid_map/map_non_valid04
-	-./lem-in < unvalid_map/map_non_valid05
-	-./lem-in < unvalid_map/map_non_valid06
-	-./lem-in < unvalid_map/map_non_valid07
-	-./lem-in < unvalid_map/map_non_valid08
-	-./lem-in < unvalid_map/map_non_valid09
-	-./lem-in < unvalid_map/map_non_valid10
-	-./lem-in < unvalid_map/map_non_valid11
-	-./lem-in < unvalid_map/map_non_valid12
-	-./lem-in < unvalid_map/map_non_valid13
-	-./lem-in < unvalid_map/map_non_valid14
-	-./lem-in < unvalid_map/map_non_valid15
-	-./lem-in < unvalid_map/map_non_valid16
-	-./lem-in < unvalid_map/map_non_valid17
-	-./lem-in < unvalid_map/map_non_valid18
-	-./lem-in < unvalid_map/map_non_valid19
-	-./lem-in < unvalid_map/map_non_valid20
-	-./lem-in < unvalid_map/map_non_valid21
-	-./lem-in < unvalid_map/map_non_valid22
-	-./lem-in < unvalid_map/map_non_valid23
-	-./lem-in < unvalid_map/map_non_valid24
-	-./lem-in < unvalid_map/map_non_valid25
-	-./lem-in < unvalid_map/map_non_valid26
-	-./lem-in < unvalid_map/map_non_valid27
-	-./lem-in < unvalid_map/map_non_valid28
-	-./lem-in < unvalid_map/map_non_valid29
-	-./lem-in < unvalid_map/map_non_valid30
-	-./lem-in < unvalid_map/map_non_valid31
-	-./lem-in < unvalid_map/map_non_valid32
-	-./lem-in < unvalid_map/map_non_valid33
-	-./lem-in < unvalid_map/map_non_valid34
-	-./lem-in < unvalid_map/map_non_valid35
-	-./lem-in < unvalid_map/map_non_valid36
-	-./lem-in < unvalid_map/map_non_valid37
-	-./lem-in < unvalid_map/map_non_valid38
+	@-./lem-in < unvalid_map/map_non_valid00
+	@-./lem-in < unvalid_map/map_non_valid01
+	@-./lem-in < unvalid_map/map_non_valid02
+	@-./lem-in < unvalid_map/map_non_valid03
+	@-./lem-in < unvalid_map/map_non_valid04
+	@-./lem-in < unvalid_map/map_non_valid05
+	@-./lem-in < unvalid_map/map_non_valid06
+	@-./lem-in < unvalid_map/map_non_valid07
+	@-./lem-in < unvalid_map/map_non_valid08
+	@-./lem-in < unvalid_map/map_non_valid09
+	@-./lem-in < unvalid_map/map_non_valid10
+	@-./lem-in < unvalid_map/map_non_valid11
+	@-./lem-in < unvalid_map/map_non_valid12
+	@-./lem-in < unvalid_map/map_non_valid13
+	@-./lem-in < unvalid_map/map_non_valid14
+	@-./lem-in < unvalid_map/map_non_valid15
+	@-./lem-in < unvalid_map/map_non_valid16
+	@-./lem-in < unvalid_map/map_non_valid17
+	@-./lem-in < unvalid_map/map_non_valid18
+	@-./lem-in < unvalid_map/map_non_valid19
+	@-./lem-in < unvalid_map/map_non_valid20
+	@-./lem-in < unvalid_map/map_non_valid21
+	@-./lem-in < unvalid_map/map_non_valid22
+	@-./lem-in < unvalid_map/map_non_valid23
+	@-./lem-in < unvalid_map/map_non_valid24
+	@-./lem-in < unvalid_map/map_non_valid25
+	@-./lem-in < unvalid_map/map_non_valid26
+	@-./lem-in < unvalid_map/map_non_valid27
+	@-./lem-in < unvalid_map/map_non_valid28
+	@-./lem-in < unvalid_map/map_non_valid29
+	@-./lem-in < unvalid_map/map_non_valid30
+	@-./lem-in < unvalid_map/map_non_valid31
+	@-./lem-in < unvalid_map/map_non_valid32
+	@-./lem-in < unvalid_map/map_non_valid33
+	@-./lem-in < unvalid_map/map_non_valid34
+	@-./lem-in < unvalid_map/map_non_valid35
+	@-./lem-in < unvalid_map/map_non_valid36
+	@-./lem-in < unvalid_map/map_non_valid37
+	@-./lem-in < unvalid_map/map_non_valid38
 
 .PHONY: all clean fclean re
