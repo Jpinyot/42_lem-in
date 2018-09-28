@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 22:32:17 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/09/25 15:37:44 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/09/26 15:50:19 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	**reppath(int **m, int l, int x)
 
 	i = 0;
 	cnt = m[x][l];
-	while (i < l - 1)
+	while (i < l)
 	{
 		if (m[x][i] && (m[i][l] == 0 || m[i][l] > cnt))
 		{
@@ -36,7 +36,7 @@ t_map		*ft_mindistance(t_map *m)
 	int i;
 
 	i = 0;
-	while (i < m->w)
+	while (i < m->w - 1)
 	{
 		if (m->map[m->w - 1][i])
 			m->map = reppath(m->map, m->w - 1, i);

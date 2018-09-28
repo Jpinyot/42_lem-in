@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 18:52:53 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/09/25 15:45:55 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/09/28 20:40:24 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,15 @@ static t_list	*ft_del_str(t_list *mem, int i)
 	return (mem);
 }
 
+static	int		ft_free_all(t_list *mem)
+{
+	if (mem->content)
+		free(mem->content);
+	free(mem);
+	mem = NULL;
+	return (0);
+}
+
 int				get_next_line(const int fd, char **line)
 {
 	static t_list	*file;
@@ -84,7 +93,7 @@ int				get_next_line(const int fd, char **line)
 			break ;
 	}
 	if (i < BUFF_SIZE && !ft_strlen(mem->content))
-		return (0);
+		return (ft_free_all(mem));
 	i = ft_copy_line(mem->content, line);
 	mem = ft_del_str(mem, i);
 	return (1);

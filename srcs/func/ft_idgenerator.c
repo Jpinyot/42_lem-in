@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 19:43:19 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/07/01 18:18:04 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/09/26 17:40:00 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,14 @@ static t_id	*ft_bgnend(char **map, int x)
 	else
 		while (map[i] && ft_strcmp(map[i], "##end") != 0)
 			i++;
-	if (map[i] == NULL || (map[i + 1][0] == '#'))
+	while (map[++i] && map[i][0] == '#' && ft_strcmp(map[i], "##end")
+			&& ft_strcmp(map[i], "##start"))
+		if (map[i][0] != '#')
+			break ;
+	if (map[i] == NULL || ft_strcmp(map[i], "##end") == 0
+			|| ft_strcmp(map[i], "##end") == 0)
 		return (NULL);
-	if (!(bgn = ft_split(map[i + 1], x)))
+	if (!(bgn = ft_split(map[i], x)))
 		return (NULL);
 	return (bgn);
 }
@@ -116,7 +121,8 @@ t_id		*ft_idgenerator(char **map, int i, int cnt)
 		}
 		else if (ft_strcmp(map[i], "##start") == 0 ||
 				ft_strcmp(map[i], "##end") == 0)
-			i++;
+			while (map[i][0] == '#')
+				i++;
 	}
 	if (!(id->next = ft_bgnend(map, cnt)) || nonrepeat(bgn) == 0)
 		ft_exit();

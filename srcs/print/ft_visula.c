@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 18:26:45 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/07/01 17:54:17 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/09/28 20:36:00 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static int	ft_selector(void)
 {
-	char *b;
-	char n;
+	char	b[4];
+	char	n;
+	int		i;
 
-	b = NULL;
 	n = 0;
-	get_next_line(1, &b);
-	if (b != NULL)
-	{
+	i = -1;
+	while (++i < 4)
+		b[i] = 0;
+	i = read(1, b, 3);
+	if (b[1] != 0)
 		n = ft_atoi(b);
-		ft_strdel(&b);
-	}
 	ft_printf("\033[H\033[J");
 	ft_putbanner();
 	return (n);

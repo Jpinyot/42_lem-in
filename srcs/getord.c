@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 19:56:15 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/09/25 15:56:59 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/09/26 15:32:45 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ char	**getord(void)
 			ft_exit();
 		d = s;
 		if (!(s = ft_strjoin(s, line)))
-			ft_exit();
+			exit(-1);
 		ft_strdel(&d);
 		d = s;
 		if (!(s = ft_strjoin(s, "\n")))
-			ft_exit();
+			exit(-1);
 		ft_strdel(&d);
 		ft_strdel(&line);
 	}
