@@ -6,7 +6,7 @@
 #    By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/26 16:55:25 by jpinyot           #+#    #+#              #
-#    Updated: 2018/09/28 17:14:38 by jpinyot          ###   ########.fr        #
+#    Updated: 2018/09/29 22:12:35 by jpinyot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ for n in {1..100000}
 do
 #	ants=$(jot -r 1 1 10);
 	ants=50;
-	nodes=$(jot -r 1 2 50);
+	nodes=$(jot -r 1 2 500);
 	echo "$ants $nodes"
 	./valid_map/lem-in_gen $ants $nodes > tester_map.map
 	echo "=============================inicio================================="
