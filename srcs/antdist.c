@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 19:55:01 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/07/01 17:45:30 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/11/13 18:11:28 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ static t_path	*minmaxcost(t_path *p, int sel)
 	t = p;
 	while (t)
 	{
-		if (sel && t->cost < r->cost)
+		if (sel && t->ants > 0 && t->cost < r->cost)
 			r = t;
-		else if (sel == 0 && t->cost > r->cost)
+		else if (sel == 0 && t->ants > 0 && t->cost > r->cost)
 			r = t;
 		t = t->next;
 	}
@@ -75,6 +75,7 @@ static t_path	*sortants(t_path *p)
 		max->ants -= a;
 		min->cost += a;
 		max->cost -= a;
+		ft_putchar('\n');
 		return (sortants(p));
 	}
 	return (p);
